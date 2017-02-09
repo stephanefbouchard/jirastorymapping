@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="phone-viewport">
     <md-toolbar class="md-primary">
-      <md-button class="md-icon-button">
+      <md-button class="md-icon-button" @click.native="toggleLeftSidenav">
         <md-icon>menu</md-icon>
       </md-button>
 
@@ -11,6 +11,16 @@
         <md-icon>local_cafe</md-icon>
       </md-button>
     </md-toolbar>
+
+    <md-sidenav class="md-left" ref="leftSidenav">
+      <md-toolbar class="md-large">
+        <div class="md-toolbar-container">
+          <h3 class="md-title">Sidenav content</h3>
+        </div>
+      </md-toolbar>
+    </md-sidenav>
+
+
     <router-view></router-view>
   </div>
 </template>
@@ -18,6 +28,11 @@
 <script>
 export default {
   name: 'app',
+  methods: {
+    toggleLeftSidenav() {
+      this.$refs.leftSidenav.toggle();
+    },
+  },
 };
 </script>
 

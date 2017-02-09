@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="phone-viewport">
     <router-link to="/dashboard">Go to Dashboard</router-link>
   </div>
 </template>
