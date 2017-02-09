@@ -29,7 +29,7 @@
             <md-icon>dashboard</md-icon>
             <span>
               <!-- TODO bind url-->
-              <router-link to="/">{{item.name}} {{item.self}}</router-link>
+              <router-link :to="{ path: `dashboard/${item.id}` }" replace>{{item.name}}</router-link>
             </span>
           </md-list-item>
 
