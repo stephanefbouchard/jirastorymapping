@@ -1,63 +1,49 @@
 <template>
   <div class="hello">
+
+    <md-layout md-gutter>
       <md-layout md-column md-gutter>
-        <md-card>
-          <md-card-header>
-            <div class="md-title">Title goes here</div>
-            <div class="md-subhead">Subtitle here</div>
-          </md-card-header>
+        <md-layout>
+          <card v-for="card in cards"
+          v-bind:model="card">
+          </card>
+        </md-layout>
+        <md-layout>
 
-          <md-card-actions>
-            <md-button>Action</md-button>
-            <md-button>Action</md-button>
-          </md-card-actions>
+        </md-layout>
+      </md-layout>
 
-          <md-card-content>
-            This is some crappy content right there
-          </md-card-content>
-        </md-card>
+      <md-layout md-column md-gutter>
+        <md-layout md-flex="50"></md-layout>
+        <md-layout></md-layout>
+        <md-layout></md-layout>
+      </md-layout>
     </md-layout>
-
-
-    <h4>{{ data }}</h4>
   </div>
 </template>
 
 <script>
+import card from 'components/card';
+
 export default {
   name: 'hello',
   data() {
     return {
       msg: 'My Fist Dashboard',
+      cards: [
+        { title: 'A user chill 1', description: 'meh its super boring' },
+        { title: 'A user chill 2', description: 'meh its super boring' },
+        { title: 'A user chill 3', description: 'meh its super boring' },
+        { title: 'A user chill 4', description: 'meh its super boring' },
+      ],
     };
   },
-  created() {
-  },
-  goToDashboard() {
-
-  },
-  methods: {
+  components: {
+    'other-component': card,
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>
