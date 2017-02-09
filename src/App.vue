@@ -25,6 +25,14 @@
             </span>
           </md-list-item>
 
+          <md-list-item v-for="item in navItems">
+            <md-icon>dashboard</md-icon>
+            <span>
+              <!-- TODO bind url-->
+              <router-link to="/">{{item.name}} {{item.self}}</router-link>
+            </span>
+          </md-list-item>
+
           <md-list-item>
             <md-icon>dashboard</md-icon>
             <span>
@@ -50,23 +58,30 @@
 <script>
 export default {
   name: 'app',
+  created() {
+    this.fetchBoards();
+  },
   methods: {
     toggleLeftSidenav() {
       this.$refs.leftSidenav.toggle();
     },
+    fetchBoards() {
+      const filter = 'projectKeyOrId=ESMT';
+      const url = `/agile/1.0/board?${filter}`;
+      this.$http.get(url).then((res) => {
+        this.navItems = res.body.values;
+      });
+    },
+  },
+  data() {
+    return {
+      navItems: [],
+    };
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
 .brand {
   max-width: 120px;
 }
