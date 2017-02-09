@@ -33,13 +33,6 @@
           </md-list-item>
 
           <md-list-item>
-            <md-icon>dashboard</md-icon>
-            <span>
-              <router-link to="/dashboard">View my dashboards</router-link>
-            </span>
-          </md-list-item>
-
-          <md-list-item>
             <md-icon>pan_tool</md-icon>
             <span>
               <router-link to="/about">About</router-link>

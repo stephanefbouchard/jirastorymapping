@@ -1,5 +1,7 @@
 <template>
-  <div class="hello">
+  <div>
+
+    <h5>Dashboard Id: {{$route.params.id}}</h5>
 
     <md-layout md-gutter>
       <epic v-for="epic in epics"
@@ -17,7 +19,7 @@ export default {
   },
   methods: {
     fetchEpic() {
-      this.$http.get('/agile/1.0/board/609/epic').then((data) => {
+      this.$http.get(`/agile/1.0/board/${this.id}/epic`).then((data) => {
         this.epics = data.body.values;
       }, (err) => {
         this.data = err;
@@ -29,6 +31,7 @@ export default {
       epics: this.epics,
     };
   },
+  props: ['id'],
 };
 </script>
 

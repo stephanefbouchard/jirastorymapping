@@ -1,27 +1,15 @@
 import Vue from 'vue';
-import Router from 'vue-router';
+import VueRouter from 'vue-router';
 import Home from 'components/home';
 import Dashboard from 'components/dashboard';
 import About from 'components/About';
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home,
-    },
-    {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard,
-    },
-    {
-      path: '/about',
-      name: 'About',
-      component: About,
-    },
-  ],
-});
+const routes = [
+  { path: '/', name: 'Home', component: Home },
+  { path: '/dashboard/:id', name: 'Dashboard', component: Dashboard, props: true },
+  { path: '/about', name: 'About', component: About },
+];
+
+export default new VueRouter({ routes });
