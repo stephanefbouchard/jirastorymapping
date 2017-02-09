@@ -12,7 +12,7 @@ Vue.use(VueMaterial);
 
 Vue.material.registerTheme('default', {
   primary: 'brown',
-  accent: 'yellow',
+  accent: 'black',
   warn: 'red',
   background: 'white',
 });
