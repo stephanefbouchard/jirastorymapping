@@ -28,7 +28,7 @@
           <md-list-item v-for="item in navItems">
             <md-icon>dashboard</md-icon>
             <span>
-              <router-link :to="{ path: `dashboard/${item.id}` }" replace>{{item.name}}</router-link>
+              <router-link :to="{ path: `dashboard/${item.id}` }">{{item.name}}</router-link>
             </span>
           </md-list-item>
 
