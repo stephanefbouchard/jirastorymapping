@@ -28,7 +28,6 @@
           <md-list-item v-for="item in navItems">
             <md-icon>dashboard</md-icon>
             <span>
-              <!-- TODO bind url-->
               <router-link :to="{ path: `dashboard/${item.id}` }" replace>{{item.name}}</router-link>
             </span>
           </md-list-item>
