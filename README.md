@@ -1,6 +1,16 @@
-# jirastorymapping
+> Expresso, a Jira story mapper
 
-> Expresso, a story mapping tools
+### Running the dockerized version
+
+Create the image
+```bash
+docker build . -t expresso
+```
+
+Run the container
+```bash
+docker run --name [name_of_your_container] -p 3214:8080 expresso
+```
 
 ## Build Setup
 
