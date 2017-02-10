@@ -1,9 +1,9 @@
 <template>
   <div>
     <md-layout md-gutter>
-        <epics v-for="epic in epics"
-          v-bind:model="epic"
-        >
+        <epics
+          v-for="epic in epics"
+          v-bind:model="epic">
         </epics>
     </md-layout>
     <version v-for="version in versions"
@@ -21,9 +21,13 @@
 </template>
 
 <script>
+import Epics from 'components/Epics';
+import Version from 'components/Version';
+
 import EventBus from 'event-bus';
 
 export default {
+  components: { Epics, Version },
   created() {
     this.fetchData();
     EventBus.$on('apply-version-to-card', (data) => {
@@ -75,7 +79,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .version-name {
     border-bottom: 1px solid;

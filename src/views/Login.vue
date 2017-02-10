@@ -45,7 +45,7 @@ export default {
         this.$router.push('/home');
         EventBus.$emit('user-logged-in');
       }, () => {
-        console.log('error');
+        // console.log('error');
       });
     },
   },

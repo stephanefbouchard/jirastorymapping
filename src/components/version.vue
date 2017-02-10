@@ -26,7 +26,10 @@
 </template>
 
 <script>
+import Cards from 'components/Cards';
+
 export default {
+  components: { Cards },
   data() {
     return {
       title: this.version ? this.version.name : 'Unschedule',

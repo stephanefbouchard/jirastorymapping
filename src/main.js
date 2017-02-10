@@ -21,12 +21,6 @@ Vue.material.registerTheme('default', {
   background: 'white',
 });
 
-// Component registering
-Vue.component('Epics', require('./components/Epics.vue'));
-Vue.component('Cards', require('./components/Cards.vue'));
-Vue.component('Card', require('./components/Card.vue'));
-Vue.component('Version', require('./components/Version.vue'));
-
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
