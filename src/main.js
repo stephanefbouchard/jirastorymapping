@@ -22,10 +22,10 @@ Vue.material.registerTheme('default', {
 });
 
 // Component registering
-Vue.component('epics', require('./components/epics.vue'));
-Vue.component('cards', require('./components/cards.vue'));
-Vue.component('card', require('./components/card.vue'));
-Vue.component('version', require('./components/version.vue'));
+Vue.component('Epics', require('./components/Epics.vue'));
+Vue.component('Cards', require('./components/Cards.vue'));
+Vue.component('Card', require('./components/Card.vue'));
+Vue.component('Version', require('./components/Version.vue'));
 
 /* eslint-disable no-new */
 new Vue({
