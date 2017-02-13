@@ -1,17 +1,8 @@
 <template>
-  <md-card class="card">
+  <md-card class="epic">
     <card-header>
       <div class="md-title">{{ title }}</div>
     </card-header>
-
-    <md-card-actions>
-      <md-button>Action</md-button>
-      <md-button>Action</md-button>
-    </md-card-actions>
-
-    <md-card-content>
-      {{ description }}
-    </md-card-content>
   </md-card>
 </template>
 
@@ -19,8 +10,7 @@
 export default {
   data() {
     return {
-      title: this.model.title,
-      description: this.model.description,
+      title: this.model.summary,
     };
   },
   props: ['model'],
@@ -29,7 +19,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .card {
+  .epic {
     margin: 16px;
   }
 </style>

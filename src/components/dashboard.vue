@@ -4,9 +4,9 @@
     <md-layout md-gutter>
       <md-layout md-column md-gutter>
         <md-layout>
-          <card v-for="card in cards"
-          v-bind:model="card">
-          </card>
+          <epic v-for="epic in epics"
+          v-bind:model="epic">
+          </epic>
         </md-layout>
         <md-layout>
 
@@ -26,16 +26,21 @@
 import card from 'components/card';
 
 export default {
-  name: 'hello',
+  created() {
+    this.fetchEpic();
+  },
+  methods: {
+    fetchEpic() {
+      this.$http.get('/agile/1.0/board/609/epic').then((data) => {
+        this.epics = data.body.values;
+      }, (err) => {
+        this.data = err;
+      });
+    },
+  },
   data() {
     return {
-      msg: 'My Fist Dashboard',
-      cards: [
-        { title: 'A user chill 1', description: 'meh its super boring' },
-        { title: 'A user chill 2', description: 'meh its super boring' },
-        { title: 'A user chill 3', description: 'meh its super boring' },
-        { title: 'A user chill 4', description: 'meh its super boring' },
-      ],
+      epics: this.epics,
     };
   },
   components: {

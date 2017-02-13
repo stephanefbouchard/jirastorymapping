@@ -20,6 +20,7 @@ Vue.material.registerTheme('default', {
 Vue.http.headers.common.Authorization = 'Basic c3RlcGhhbmUuZm9ydGluYm91Y2hhcmQ6UG9rZXB1Y2UxIQ==';
 
 // Component registering
+Vue.component('epic', require('./components/epic.vue'));
 Vue.component('card', require('./components/card.vue'));
 
 /* eslint-disable no-new */

@@ -14,9 +14,6 @@ export default {
   created() {
     this.fetchData();
   },
-  goToDashboard() {
-
-  },
   methods: {
     fetchData() {
       this.$http.get('/api/2/issue/DS-12906').then((data) => {

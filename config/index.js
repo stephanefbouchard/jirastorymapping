@@ -34,8 +34,15 @@ module.exports = {
         changeOrigin: true,
         pathRewrite: {
           '^/api/': ''
-        }
-      }
+        },
+      },
+      '/agile': {
+        target: 'https://appdirect.jira.com/rest/agile/',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/agile/': ''
+        },
+      },
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
