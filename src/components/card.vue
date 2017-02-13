@@ -1,17 +1,8 @@
 <template>
   <md-card class="card">
     <mp-card-header>
-      <div class="md-title">{{ title }}</div>
+      <div>{{ title }}</div>
     </mp-card-header>
-
-    <md-card-actions>
-      <md-button>Action</md-button>
-      <md-button>Action</md-button>
-    </md-card-actions>
-
-    <md-card-content>
-      {{ description }}
-    </md-card-content>
   </md-card>
 </template>
 
