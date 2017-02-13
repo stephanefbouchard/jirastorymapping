@@ -1,9 +1,12 @@
 <template>
-  <md-card class="card">
-    <mp-card-header>
-      <div>{{ title }}</div>
-    </mp-card-header>
-  </md-card>
+  <md-layout md-row>
+    <md-card class="card">
+      <md-card-header>
+        <div>{{ title }}</div>
+      </md-card-header>
+    </md-card>
+  </md-layout>
+
 </template>
 
 <script>
@@ -22,5 +25,6 @@ export default {
 <style scoped>
   .card {
     margin: 16px;
+    height: 150px;
   }
 </style>
