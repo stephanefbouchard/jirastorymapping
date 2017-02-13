@@ -16,8 +16,6 @@
         <md-button>Action</md-button>
       </md-card-actions>
     </md-card>
-
-    <h4>{{ data }}</h4>
   </div>
 </template>
 
@@ -26,22 +24,15 @@ export default {
   name: 'hello',
   data() {
     return {
-      msg: 'Expresso, the story mapping tool.',
-      data: '',
+      msg: 'My Fist Dashboard',
     };
   },
   created() {
-    this.fetchData();
+  },
+  goToDashboard() {
+
   },
   methods: {
-    fetchData() {
-      this.$http
-        .get('/api/2/issue/DS-12906').then((data) => {
-          this.data = data;
-        }, (err) => {
-          this.data = err;
-        });
-    },
   },
 };
 </script>
