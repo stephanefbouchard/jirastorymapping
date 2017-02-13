@@ -1,8 +1,8 @@
 <template>
   <md-card class="card">
-    <card-header>
+    <mp-card-header>
       <div class="md-title">{{ title }}</div>
-    </card-header>
+    </mp-card-header>
 
     <md-card-actions>
       <md-button>Action</md-button>
@@ -19,8 +19,8 @@
 export default {
   data() {
     return {
-      title: this.model.title,
-      description: this.model.description,
+      title: this.model.fields.summary,
+      // description: this.model.description,
     };
   },
   props: ['model'],

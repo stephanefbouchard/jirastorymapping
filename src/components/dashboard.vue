@@ -2,29 +2,15 @@
   <div class="hello">
 
     <md-layout md-gutter>
-      <md-layout md-column md-gutter>
-        <md-layout>
-          <epic v-for="epic in epics"
-          v-bind:model="epic">
-          </epic>
-        </md-layout>
-        <md-layout>
-
-        </md-layout>
-      </md-layout>
-
-      <md-layout md-column md-gutter>
-        <md-layout md-flex="50"></md-layout>
-        <md-layout></md-layout>
-        <md-layout></md-layout>
+      <epic v-for="epic in epics"
+        v-bind:model="epic">
+      </epic>
       </md-layout>
     </md-layout>
   </div>
 </template>
 
 <script>
-import card from 'components/card';
-
 export default {
   created() {
     this.fetchEpic();
@@ -42,9 +28,6 @@ export default {
     return {
       epics: this.epics,
     };
-  },
-  components: {
-    'other-component': card,
   },
 };
 </script>
