@@ -8,7 +8,7 @@
       <h2 class="md-title" style="flex: 1">Expresso, the story mapping tool</h2>
 
       <md-button class="md-icon-button">
-        <md-icon>favorite</md-icon>
+        <md-icon>local_cafe</md-icon>
       </md-button>
     </md-toolbar>
     <router-view></router-view>

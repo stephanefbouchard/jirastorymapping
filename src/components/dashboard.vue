@@ -2,10 +2,6 @@
   <div class="hello">
       <md-layout md-column md-gutter>
         <md-card>
-          <md-card-media>
-            <img src="assets/card-image-1.jpg" alt="People">
-          </md-card-media>
-
           <md-card-header>
             <div class="md-title">Title goes here</div>
             <div class="md-subhead">Subtitle here</div>
@@ -17,7 +13,7 @@
           </md-card-actions>
 
           <md-card-content>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio itaque ea, nostrum odio. Dolores, sed accusantium quasi non, voluptas eius illo quas, saepe voluptate pariatur in deleniti minus sint. Excepturi.
+            This is some crappy content right there
           </md-card-content>
         </md-card>
     </md-layout>
