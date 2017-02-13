@@ -10,10 +10,13 @@ import router from './router';
 Vue.use(Resource);
 Vue.use(VueMaterial);
 
+Vue.material.registerTheme('default', {
+  primary: 'brown',
+  accent: 'yellow',
+  warn: 'red',
+  background: 'white',
+});
 
-// VueMaterial.theme.register('default', {
-//  primary: 'blue',
-// });
 Vue.http.headers.common.Authorization = 'Basic c3RlcGhhbmUuZm9ydGluYm91Y2hhcmQ6UG9rZXB1Y2UxIQ==';
 
 /* eslint-disable no-new */
