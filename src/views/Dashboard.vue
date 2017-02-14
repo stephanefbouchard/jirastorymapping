@@ -1,6 +1,9 @@
 <template>
   <div>
     <md-layout md-gutter>
+      <h1 class="board-name">ESMT BOARD : User Journey</h1>
+    </md-layout>
+    <md-layout md-gutter>
         <epics
           v-for="epic in epics"
           v-bind:model="epic">
@@ -80,8 +83,11 @@ export default {
 </script>
 
 <style scoped>
+  .board-name {
+    padding: 15px;
+  }
   .version-name {
     border-bottom: 1px solid;
-    padding: 16px
+    padding: 1px
   }
 </style>

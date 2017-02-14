@@ -12,7 +12,12 @@
             </md-menu-item>
           </md-menu-content>
         </md-menu>
-        <div>{{ title }}</div>
+        <md-layout md-row>
+          <md-chip>{{ key }}</md-chip>
+        </md-layout>
+        <md-layout md-row>
+          <div class="summary">{{ title }}</div>
+        </md-layout>
       </md-card-header>
       <md-card-actions>
         <md-menu class="move-to-menu" md-size="3">
@@ -27,7 +32,7 @@
             </md-menu-item>
             <md-menu-item @click.native="changeVersion()">
               <md-icon>input</md-icon>
-              <span>Unschedule</span>
+              <span>Unscheduled</span>
             </md-menu-item>
           </md-menu-content>
         </md-menu>
@@ -57,8 +62,9 @@ export default {
   },
   data() {
     return {
-      fibo: [1, 2, 3, 5, 8, 13, 21, 34, 40],
+      key: this.model.key,
       title: this.model.fields.summary,
+      fibo: [1, 2, 3, 5, 8, 13, 21, 34, 40],
     };
   },
   computed: {
@@ -74,7 +80,12 @@ export default {
 <style scoped>
   .card {
     margin: 16px;
-    height: 150px;
+    width: 350px;
+    height: 175px;
+    border-bottom: 1px solid;
+  }
+  .summary {
+    padding: 16px;
   }
   .move-to-menu {
     float: right;

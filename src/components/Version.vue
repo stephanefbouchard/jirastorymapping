@@ -32,7 +32,7 @@ export default {
   components: { Cards },
   data() {
     return {
-      title: this.version ? this.version.name : 'Unschedule',
+      title: this.version ? this.version.name : 'Unscheduled',
       seen: true,
       counter: 0,
     };
