@@ -8,10 +8,10 @@ import About from 'components/About';
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/', name: 'Login', component: Login },
+  { path: '/', name: 'Home', component: Home },
   { path: '/dashboard/:id', name: 'Dashboard', component: Dashboard, props: true },
   { path: '/about', name: 'About', component: About },
-  { path: '/home', name: 'Home', component: Home },
+  { path: '/login', name: 'Login', component: Login },
 ];
 
 export default new VueRouter({ routes });

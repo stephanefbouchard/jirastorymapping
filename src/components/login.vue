@@ -12,7 +12,7 @@
           <md-input v-model="credentials.password" type="password"></md-input>
         </md-input-container>
 
-        <md-button class="md-raised md-primary" type="submit" @click.native="doLogin">
+        <md-button class="md-raised md-primary" type="submit" @click.native="onLoginSubmit">
           Login
         </md-button>
       </form>
@@ -20,32 +20,30 @@
 </template>
 
 <script>
+import Vue from 'vue';
+import EventBus from 'event-bus';
+
 export default {
   data() {
     return {
       credentials: {
         username: '',
         password: '',
+        token: '',
       },
     };
   },
-  created() {
-    this.checkLogin();
-  },
   methods: {
-    checkLogin() {
-      const credentials = this.$localStorage.get('credentials');
-      if (credentials) {
-        this.credentials = credentials;
-        this.doLogin();
-      }
+    onLoginSubmit() {
+      this.token = btoa(`${this.credentials.username}:${this.credentials.password}`);
+      this.doLogin();
     },
     doLogin() {
-      const token = btoa(`${this.credentials.username}:${this.credentials.password}`);
-      this.$http.headers.common.Authorization = `Basic ${token}`;
-
+      Vue.http.headers.common.Authorization = `Basic ${this.token}`;
       this.$http.get('/api/2/issue/createmeta').then(() => {
-        this.$localStorage.set('credentials', this.credentials);
+        this.$localStorage.set('auth-token', JSON.stringify(this.token));
+        this.$router.push('/home');
+        EventBus.$emit('user-logged-in');
       }, () => {
         console.log('error');
       });

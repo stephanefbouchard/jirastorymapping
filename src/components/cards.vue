@@ -2,7 +2,8 @@
   <md-layout md-column>
     <card v-for="card in filter()"
           v-bind:model="card"
-          v-bind:versions="versions">
+          v-bind:versions="versions"
+    >
     </card>
   </md-layout>
 </template>

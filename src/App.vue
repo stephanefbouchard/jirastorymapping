@@ -7,10 +7,12 @@
 
       <h2 class="md-title" style="flex: 1">Expresso</h2>
 
-      <h4>Dashboard Id: {{$route.params.id}}</h4>
+      <h4 v-if="$route.params.id">Dashboard Id: {{$route.params.id}}</h4>
       <md-button class="md-icon-button">
         <md-icon>local_cafe</md-icon>
       </md-button>
+      <router-link v-if='!loggedIn' to="/login">Login</router-link>
+      <a v-if='loggedIn' @click.native="onLogout">Logout</a>
     </md-toolbar>
 
     <md-sidenav class="md-left" ref="leftSidenav">
@@ -42,17 +44,27 @@
         </md-list>
       </md-toolbar>
     </md-sidenav>
-
-
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import Vue from 'vue';
+import EventBus from './event-bus';
+
 export default {
   name: 'app',
   created() {
-    this.fetchBoards();
+    EventBus.$on('user-logged-in', () => {
+      this.onLogin();
+    });
+
+    this.token = JSON.parse(this.localStorage.get('auth-token'));
+    if (this.token) {
+      Vue.http.headers.common.Authorization = `Basic ${this.token}`;
+    } else {
+      this.$router.push('/login');
+    }
   },
   methods: {
     toggleLeftSidenav() {
@@ -65,10 +77,20 @@ export default {
         this.navItems = res.body.values;
       });
     },
+    onLogin() {
+      this.loggedIn = true;
+      this.fetchBoards();
+    },
+    onLogout() {
+      this.loggedIn = false;
+      this.$localStorage.remove('auth-token');
+      this.$router.push('/login');
+    },
   },
   data() {
     return {
       navItems: [],
+      loggedIn: false,
     };
   },
 };
