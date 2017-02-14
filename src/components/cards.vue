@@ -1,7 +1,8 @@
 <template>
   <md-layout md-column>
     <card v-for="card in filter()"
-          v-bind:model="card">
+          v-bind:model="card"
+          v-bind:versions="versions">
     </card>
   </md-layout>
 </template>
@@ -33,7 +34,7 @@ export default {
               && card.fields.fixVersions.length === 0));
     },
   },
-  props: ['issues', 'version', 'epic'],
+  props: ['issues', 'versions', 'version', 'epic'],
 };
 </script>
 

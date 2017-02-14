@@ -9,36 +9,27 @@
         >
         </epics>
     </md-layout>
-    <div v-for="version in versions">
-      <h2 class="version-name">{{ version.name }}</h2>
-      <md-layout md-gutter>
-        <md-layout md-row v-for="epic in epics">
-          <cards
-                  v-bind:issues="issues"
-                  v-bind:version="version"
-                  v-bind:epic="epic">
-          </cards>
-        </md-layout>
-      </md-layout>
-    </div>
-
-    <h2 class="version-name">Unschedule</h2>
-    <md-layout md-gutter>
-      <md-layout md-row v-for="epic in epics">
-        <cards
-                v-bind:issues="issues"
-                v-bind:epic="epic">
-        </cards>
-      </md-layout>
-    </md-layout>
+    <version v-for="version in versions"
+        v-bind:issues="issues"
+        v-bind:versions="versions"
+        v-bind:version="version"
+        v-bind:epics="epics">
+    </version>
+    <version v-bind:issues="issues"
+       v-bind:epics="epics">
+    </version>
   </div>
 </template>
 
 <script>
+import EventBus from 'event-bus';
+
 export default {
   created() {
-    this.boardId = 609;
     this.fetchData();
+    EventBus.$on('apply-version-to-card', (data) => {
+      this.applyVersionToCard(data.version, data.card);
+    });
   },
   methods: {
     fetchData() {
@@ -54,6 +45,10 @@ export default {
       this.$http.get(`/agile/1.0/board/${this.id}/epic`).then((data) => {
         this.epics = data.body.values;
       });
+    },
+    applyVersionToCard(version, card) {
+      console.log(version, card);
+      debugger;
     },
   },
   data() {

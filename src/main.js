@@ -3,12 +3,14 @@
 import Vue from 'vue';
 import Resource from 'vue-resource';
 import VueMaterial from 'vue-material';
+import VueDragula from 'vue-dragula';
 import 'vue-material/dist/vue-material.css';
 import App from './App';
 import router from './router';
 
 Vue.use(Resource);
 Vue.use(VueMaterial);
+Vue.use(VueDragula);
 
 Vue.material.registerTheme('default', {
   primary: 'brown',
@@ -23,6 +25,7 @@ Vue.http.headers.common.Authorization = 'Basic c3RlcGhhbmUuZm9ydGluYm91Y2hhcmQ6U
 Vue.component('epics', require('./components/epics.vue'));
 Vue.component('cards', require('./components/cards.vue'));
 Vue.component('card', require('./components/card.vue'));
+Vue.component('version', require('./components/version.vue'));
 
 /* eslint-disable no-new */
 new Vue({
