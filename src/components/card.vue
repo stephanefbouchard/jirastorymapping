@@ -2,10 +2,20 @@
   <md-layout md-row>
     <md-card class="card">
       <md-card-header>
+        <md-menu class="move-to-menu" md-size="3">
+          <md-button md-menu-trigger class="story-point md-icon-button md-raised md-mini">
+            {{ storyPoint }}
+          </md-button>
+          <md-menu-content>
+            <md-menu-item v-for="item in fibo" @click.native="changeStoryPoint(item)">
+              <span>{{ item }}</span>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
         <div>{{ title }}</div>
       </md-card-header>
       <md-card-actions>
-        <md-menu class="move-to-menu" md-size="4">
+        <md-menu class="move-to-menu" md-size="3">
           <md-button class="md-icon-button" md-menu-trigger>
             <md-icon>playlist_add</md-icon>
           </md-button>
@@ -34,15 +44,27 @@ export default {
   methods: {
     changeVersion(version) {
       EventBus.$emit('apply-version-to-card', {
+        issue: this.model,
         version,
-        card: this.model,
+      });
+    },
+    changeStoryPoint(point) {
+      EventBus.$emit('apply-story-point-to-card', {
+        issue: this.model,
+        point,
       });
     },
   },
   data() {
     return {
+      fibo: [1, 2, 3, 5, 8, 13, 21, 34, 40],
       title: this.model.fields.summary,
     };
+  },
+  computed: {
+    storyPoint() {
+      return this.model.fields.customfield_10013 || '-';
+    },
   },
   props: ['model', 'versions'],
 };
@@ -56,5 +78,16 @@ export default {
   }
   .move-to-menu {
     float: right;
+  }
+  .story-point-container {
+    width: initial;
+    float: right;
+    top: -10px;
+    right: -10px;
+  }
+  .story-point {
+    float: right;
+    top: -10px;
+    right: -10px;
   }
 </style>

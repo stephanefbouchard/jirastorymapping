@@ -1,8 +1,5 @@
 <template>
   <div>
-
-    <h5>Dashboard Id: {{$route.params.id}}</h5>
-
     <md-layout md-gutter>
         <epics v-for="epic in epics"
           v-bind:model="epic"
@@ -15,8 +12,10 @@
         v-bind:version="version"
         v-bind:epics="epics">
     </version>
-    <version v-bind:issues="issues"
-       v-bind:epics="epics">
+    <version
+       v-bind:issues="issues"
+       v-bind:epics="epics"
+       v-bind:versions="versions">
     </version>
   </div>
 </template>
@@ -28,7 +27,16 @@ export default {
   created() {
     this.fetchData();
     EventBus.$on('apply-version-to-card', (data) => {
-      this.applyVersionToCard(data.version, data.card);
+      this.updateIssue(data.issue, {
+        fixVersions: [{
+          id: `${data.version.id}`,
+        }],
+      });
+    });
+    EventBus.$on('apply-story-point-to-card', (data) => {
+      this.updateIssue(data.issue, {
+        customfield_10013: data.point,
+      });
     });
   },
   methods: {
@@ -46,9 +54,13 @@ export default {
         this.epics = data.body.values;
       });
     },
-    applyVersionToCard(version, card) {
-      console.log(version, card);
-      debugger;
+    updateIssue(issue, data) {
+      const issue2 = issue;
+      this.$http.put(`api/2/issue/${issue.key}`, {
+        fields: data,
+      }).then(() => {
+        Object.assign(issue2.fields, data);
+      });
     },
   },
   data() {

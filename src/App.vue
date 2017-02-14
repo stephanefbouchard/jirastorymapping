@@ -7,6 +7,7 @@
 
       <h2 class="md-title" style="flex: 1">Expresso</h2>
 
+      <h4>Dashboard Id: {{$route.params.id}}</h4>
       <md-button class="md-icon-button">
         <md-icon>local_cafe</md-icon>
       </md-button>
