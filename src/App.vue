@@ -12,7 +12,7 @@
         <md-icon>local_cafe</md-icon>
       </md-button>
       <router-link v-if='!loggedIn' to="/login">Login</router-link>
-      <a v-if='loggedIn' @click.native="onLogout">Logout</a>
+      <md-button v-if='loggedIn' @click.native="onLogout">Logout</md-button>
     </md-toolbar>
 
     <md-sidenav class="md-left" ref="leftSidenav">
@@ -62,6 +62,7 @@ export default {
     this.token = JSON.parse(this.localStorage.get('auth-token'));
     if (this.token) {
       Vue.http.headers.common.Authorization = `Basic ${this.token}`;
+      this.onLogin();
     } else {
       this.$router.push('/login');
     }
