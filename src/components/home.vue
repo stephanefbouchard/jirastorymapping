@@ -1,6 +1,21 @@
 <template>
-  <div class="phone-viewport">
-    
+  <div class="login-form">
+      <form novalidate>
+        <h2>Login</h2>
+        <md-input-container>
+          <label>Username</label>
+          <md-input v-model="credentials.username"></md-input>
+        </md-input-container>
+
+        <md-input-container md-has-password>
+          <label>Password</label>
+          <md-input v-model="credentials.password" type="password"></md-input>
+        </md-input-container>
+
+        <md-button class="md-raised md-primary" type="submit" @click.native="doLogin">
+          Login
+        </md-button>
+      </form>
   </div>
 </template>
 
@@ -8,18 +23,31 @@
 export default {
   data() {
     return {
-      data: '',
+      credentials: {
+        username: '',
+        password: '',
+      },
     };
   },
   created() {
-    this.fetchData();
+    this.checkLogin();
   },
   methods: {
-    fetchData() {
-      this.$http.get('/api/2/issue/DS-12906').then((data) => {
-        this.data = data;
-      }, (err) => {
-        this.data = err;
+    checkLogin() {
+      const credentials = this.$localStorage.get('credentials');
+      if (credentials) {
+        this.credentials = credentials;
+        this.doLogin();
+      }
+    },
+    doLogin() {
+      const token = btoa(`${this.credentials.username}:${this.credentials.password}`);
+      this.$http.headers.common.Authorization = `Basic ${token}`;
+
+      this.$http.get('/api/2/issue/createmeta').then(() => {
+        this.$localStorage.set('credentials', this.credntials);
+      }, () => {
+        console.log('error');
       });
     },
   },
@@ -27,5 +55,10 @@ export default {
 </script>
 
 <style scoped>
-
+  .login-form {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+  }
 </style>

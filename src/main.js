@@ -4,6 +4,7 @@ import Vue from 'vue';
 import Resource from 'vue-resource';
 import VueMaterial from 'vue-material';
 import VueDragula from 'vue-dragula';
+import VueLocalStorage from 'vue-localstorage';
 import 'vue-material/dist/vue-material.css';
 import App from './App';
 import router from './router';
@@ -11,6 +12,7 @@ import router from './router';
 Vue.use(Resource);
 Vue.use(VueMaterial);
 Vue.use(VueDragula);
+Vue.use(VueLocalStorage);
 
 Vue.material.registerTheme('default', {
   primary: 'brown',
@@ -18,8 +20,6 @@ Vue.material.registerTheme('default', {
   warn: 'red',
   background: 'white',
 });
-
-Vue.http.headers.common.Authorization = 'Basic c3RlcGhhbmUuZm9ydGluYm91Y2hhcmQ6UG9rZXB1Y2UxIQ==';
 
 // Component registering
 Vue.component('epics', require('./components/epics.vue'));
